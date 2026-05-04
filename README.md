@@ -220,6 +220,46 @@ class MyStrategy:
 
 生成文件位于 `data/dashboard.html`。
 
+## 接入真实交易
+
+当前项目默认只做模拟交易。后续可通过替换 `paper_trader.py` 中的执行层接入真实交易。
+
+### 方案 A: 对接券商量化接口
+
+| 券商或平台 | 接口 | 难度 | 说明 |
+|------------|------|------|------|
+| 华泰 | xtquant | 中 | 需开通量化权限 |
+| 中信 | iQuant | 中 | 通常需要机构或量化权限 |
+| 通达信 | 公式交易或自动化 | 低到中 | 适合模拟下单或半自动执行 |
+| 聚宽/米筐 | 云端 API | 低到中 | 适合云端策略运行 |
+
+示例接口形态：
+
+```python
+def real_buy(symbol, price, quantity, account_id="your_account"):
+    result = broker_api.place_order(
+        symbol=symbol,
+        side="BUY",
+        order_type="LIMIT",
+        price=price,
+        quantity=quantity,
+        account=account_id,
+    )
+    return result
+```
+
+### 方案 B: 桌面自动化模拟操作
+
+对于没有开放 API 的交易客户端，可以使用 KeymouseGo 等工具录制鼠标和键盘操作，作为半自动执行层。该方案更依赖本机环境，适合演示和低频模拟。
+
+### 方案 C: 对接 xtquant
+
+```python
+from xtquant import xtdata, xttrader
+```
+
+需要参考券商量化接口文档配置账号、交易端和权限。
+
 ## Windows 定时任务
 
 ```batch
