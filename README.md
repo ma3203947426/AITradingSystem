@@ -6,11 +6,6 @@
 
 这是一个面向研究、展示和原型验证的 agent-driven trading sandbox。它把原本分散的盯盘、分析、下单、复盘和调参流程，收敛成一个可重复执行的 Agent 闭环。
 
-## 在线演示
-
-- GitHub 仓库: [AITradingSystem](https://github.com/ma3203947426/AITradingSystem)
-- 演示页: `https://ma3203947426.github.io/AITradingSystem/`
-
 ## 核心痛点
 
 个人投资者或量化策略开发者通常需要在行情软件、表格、脚本、交易记录和复盘笔记之间来回切换，容易出现决策滞后、参数试错效率低、缺少复盘闭环、交易纪律不稳定等问题。本项目通过 Agent 主循环把数据、策略、风控、执行和复盘串起来，让策略可以被持续验证和迭代。
@@ -425,4 +420,3 @@ Remove-Item data\portfolio.json,data\trading_journal.json -ErrorAction SilentlyC
 - [akshare 文档](https://akshare.akfamily.xyz/)
 - [OpenClaw 文档](https://docs.openclaw.ai)
 - [AutoClaw 视频方案](https://v.douyin.com/ftp3vfbi9v0/)
-
